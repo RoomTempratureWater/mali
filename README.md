@@ -69,4 +69,4 @@ Perfect for automating your gardening routine!
 ```
 ## Current Flow Diagram
 
-![Flow Diagram](docs/flowdiag.png"Process Flow Diagram")
+![Flow Diagram](docs/flowdiag.png?raw=true "Process Flow Diagram")
