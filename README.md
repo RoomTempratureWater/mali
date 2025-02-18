@@ -56,3 +56,21 @@ Perfect for automating your gardening routine!
 ```bash
 git clone https://github.com/yourusername/gardening-automation.git
 cd gardening-automation
+
+
+## 🧱 Project Structure
+
+gardening-automation/
+│
+├── esp32/                # ESP32 firmware and related code
+│   ├── config.h          # ESP32 configuration (Wi-Fi credentials)
+│   └── main.ino          # Main code for the ESP32
+│
+├── app/                  # FastAPI backend
+│   ├── main.py           # FastAPI app and routes
+│   ├── models.py         # Data models for API
+│   └── sensors.py        # Logic for reading sensor data
+│
+├── requirements.txt      # Python dependencies
+└── README.md             # This README file
+
