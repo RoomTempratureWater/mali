@@ -67,4 +67,6 @@ Perfect for automating your gardening routine!
 │   └── main                     # Server run wrapper
 └── README.md                    # This README file
 ```
+## Current Flow Diagram
 
+![Flow Diagram](docs/flowdiag.png"Process Flow Diagram")
