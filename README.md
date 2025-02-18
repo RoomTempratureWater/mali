@@ -55,8 +55,10 @@ Perfect for automating your gardening routine!
 
 ```bash
 git clone https://github.com/yourusername/gardening-automation.git
-cd gardening-automation```
+cd gardening-automation
+```
 
+---
 
 ## 🧱 Project Structure
 
@@ -72,5 +74,6 @@ cd gardening-automation```
 │   └── sensors.py        # Logic for reading sensor data
 │
 ├── requirements.txt      # Python dependencies
-└── README.md             # This README file```
+└── README.md             # This README file
+```
 
