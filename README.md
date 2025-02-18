@@ -66,15 +66,12 @@ cd gardening-automation
 │
 ├── esp/                         # ESP32 firmware and related code
 │   └── garden_code.ino          # Main code for the ESP32
-│
 ├── backend/                     # FastAPI backend
 │   ├── app/
 |   |   ├── templates            # Html templates for frontend
 |   |   ├── api.py
 |   |   └── requirements.txt     # Python dependencies
 │   └── main                     # Server run wrapper
-│  
-│ 
 └── README.md                    # This README file
 ```
 
