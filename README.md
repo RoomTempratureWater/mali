@@ -51,13 +51,6 @@ Perfect for automating your gardening routine!
 - **Uvicorn** for running the FastAPI server
 - **PlatformIO** or Arduino IDE for ESP32 programming
 
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/yourusername/gardening-automation.git
-cd gardening-automation
-```
-
 ---
 
 ## 🧱 Project Structure
