@@ -55,12 +55,12 @@ Perfect for automating your gardening routine!
 
 ```bash
 git clone https://github.com/yourusername/gardening-automation.git
-cd gardening-automation
+cd gardening-automation```
 
 
 ## 🧱 Project Structure
 
-gardening-automation/
+```gardening-automation/
 │
 ├── esp32/                # ESP32 firmware and related code
 │   ├── config.h          # ESP32 configuration (Wi-Fi credentials)
@@ -72,5 +72,5 @@ gardening-automation/
 │   └── sensors.py        # Logic for reading sensor data
 │
 ├── requirements.txt      # Python dependencies
-└── README.md             # This README file
+└── README.md             # This README file```
 
