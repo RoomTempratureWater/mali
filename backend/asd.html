@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IoT Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-10">
+    <div class="max-w-4xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-10">
+            <h1 class="text-3xl font-bold">IoT Dashboard</h1>
+        </div>
+
+        <!-- Battery Level Indicator -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Battery Level</h2>
+            <div class="w-full bg-gray-200 rounded-full h-6">
+                <div class="bg-blue-500 h-6 rounded-full" style="width: 75%;"></div>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">75% charged</p>
+        </div>
+
+        <!-- Graph -->
+        <div class="bg-white p-6 rounded-lg shadow-md mb-6">
+            <h2 class="text-xl font-semibold mb-4">Sensor Data</h2>
+            <div class="w-full h-64 bg-gray-200 rounded-lg">
+                <!-- Placeholder for graph -->
+                <div class="text-center text-gray-600 pt-24">Graph will be here</div>
+            </div>
+        </div>
+
+        <!-- Command Button -->
+        <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-xl font-semibold mb-4">Send Command</h2>
+            <button class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+                Send Command to ESP32
+            </button>
+        </div>
+    </div>
+</body>
+</html>

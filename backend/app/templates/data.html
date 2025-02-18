@@ -1,0 +1,108 @@
+<html>
+<head>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+    
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ccc;
+        }
+    
+        th {
+            background-color: #f2f2f2;
+        }
+    
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            cursor: pointer;
+            border: none;
+            margin-right: 5px;
+        }
+    
+        .btn:hover {
+            background-color: #eb7171;
+        }
+    </style>
+    <title>{{ email }}</title>
+</head>
+<body>
+    <h1>Here are your current devices:</h1>
+    <p type="hidden" id="email" style="display: none;">{{ email }}</p>
+    
+    <table>
+        {% for device in devices %}
+        <tr>
+            <td><b>📟 Device ID:</b> {{ device }}</td>
+            
+            <!-- Hidden input to store device ID -->
+            <input type="hidden" class="device" value="{{ device|safe }}">
+
+            <td>
+                <!-- Separate buttons for each command -->
+                <button class="send-command btn" data-command="led_on" onclick="sendCommand(this)">LED On</button>
+                <button class="send-command btn" data-command="led_off" onclick="sendCommand(this)">LED Off</button>
+                <button class="send-command btn" data-command="send_data" onclick="sendCommand(this)">Send Data</button>
+                
+                <!-- Response div -->
+                <div class="response"></div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+<!-- Load Axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<script>
+function sendCommand(button) {
+    console.log("Button Clicked!", button);  // Debugging
+
+    let token = localStorage.getItem("authitem");
+    let responseDiv = button.closest("td").querySelector(".response");
+    let device = button.closest("tr").querySelector(".device").value;
+    let email = document.getElementById("email").innerHTML;
+    let command = button.getAttribute("data-command");
+    let BASE_URL = 'https://solid-primate-strangely.ngrok-free.app';
+
+    if (!token) {
+        responseDiv.innerHTML = "<p style='color: red;'>Error: No auth token found!</p>";
+        return;
+    }
+
+    let parsedToken = JSON.parse(token);
+    let authHeader = `Bearer ${parsedToken["access_token"]}`;
+
+    console.log(`Sending command '${command}' to device '${device}' for user '${email}'`);
+
+    axios.post(BASE_URL + "/send_command", {
+        user_email: email,
+        device_id: device,
+        command: command
+    }, {
+        headers: {
+            "Authorization": authHeader,
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        responseDiv.innerHTML = `<p style='color: green;'>Success: ${response.data.message}</p>`;
+    })
+    .catch(error => {
+        console.error("Error sending command:", error);
+        responseDiv.innerHTML = `<p style='color: red;'>Error: ${error.response ? error.response.data.detail : "Unknown error"}</p>`;
+    });
+}
+
+</script>
+</html>
