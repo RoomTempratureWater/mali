@@ -68,5 +68,6 @@ Perfect for automating your gardening routine!
 └── README.md                    # This README file
 ```
 ## Current Flow Diagram
-
-<img src="docs/flowdiag.png" height="1000" width="500">
+<p align="center">
+  <img src="docs/flowdiag.png" height="1000" width="500">
+</p>
