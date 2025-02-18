@@ -69,4 +69,4 @@ Perfect for automating your gardening routine!
 ```
 ## Current Flow Diagram
 
-<img src="docs/flowdiag.png">
+<img src="docs/flowdiag.png" height="500">
