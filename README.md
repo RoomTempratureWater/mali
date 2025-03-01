@@ -1,6 +1,6 @@
 # 🌿 Mali: Gardening Automation System
 
-Welcome to the **Gardening Automation System**! This project helps you monitor and control the conditions in your garden with an **ESP32** microcontroller and a **FastAPI** backend. Keep track of temperature, humidity, and automate watering to ensure your plants are always well cared for. 🌱💧
+welcome to the **Gardening Automation System**! This project helps you monitor and control the conditions in your garden with an **ESP32** microcontroller and a **FastAPI** backend. Keep track of temperature, humidity, and automate watering to ensure your plants are always well cared for. 🌱💧
 
 ---
 
