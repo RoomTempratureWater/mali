@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Loading Animation with Cancel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            width: 300px;
+            margin: auto;
+        }
+        .btn {
+            position: relative;
+            width: 200px;
+            height: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 25px;
+            color: white;
+            background-color: #4CAF50;
+            cursor: pointer;
+            overflow: hidden;
+            transition: background 0.3s;
+        }
+        .cancel-btn {
+            display: none;
+            margin-top: 10px;
+            width: 100px;
+            height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 20px;
+            background-color: #f44336;
+            color: white;
+            cursor: pointer;
+        }
+        /* Loading animation */
+        .btn.loading::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0.3) 50%, transparent 100%);
+            background-size: 200% 100%;
+            animation: loadingBar var(--duration, 10s) linear forwards;
+        }
+        @keyframes loadingBar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <label for="slider">Set time (seconds):</label>
+    <input type="range" id="slider" min="5" max="50" step="5" value="10" oninput="updateLabel()">
+    <span id="sliderValue">10</span> sec
+
+    <br><br>
+
+    <button id="startButton" class="btn" onclick="startLoading()">Start</button>
+    <button id="cancelButton" class="cancel-btn" onclick="cancelLoading()">Cancel</button>
+</div>
+
+<script>
+    let loadingTimeout, startTime, duration, interval;
+
+    function updateLabel() {
+        document.getElementById("sliderValue").innerText = document.getElementById("slider").value;
+    }
+
+    function startLoading() {
+        let button = document.getElementById("startButton");
+        let cancelButton = document.getElementById("cancelButton");
+
+        duration = parseInt(document.getElementById("slider").value) * 1000;
+        startTime = Date.now();
+
+        button.classList.add("loading");
+        button.innerText = "Loading...";
+        button.style.setProperty("--duration", duration + "ms");
+
+        cancelButton.style.display = "inline-block"; // Show Cancel button
+
+        // Start manual progress tracking (in case animation doesn't apply)
+        interval = setInterval(() => {
+            let elapsed = Date.now() - startTime;
+            let progress = Math.min((elapsed / duration) * 100, 100);
+            button.style.background = `linear-gradient(to right, #4CAF50 ${progress}%, #ddd ${progress}%)`;
+
+            if (progress >= 100) {
+                clearInterval(interval);
+                resetButton();
+            }
+        }, 100);
+
+        // Automatically reset after the duration
+        loadingTimeout = setTimeout(resetButton, duration);
+    }
+
+    function cancelLoading() {
+        clearTimeout(loadingTimeout);
+        clearInterval(interval);
+        resetButton();
+    }
+
+    function resetButton() {
+        let button = document.getElementById("startButton");
+        let cancelButton = document.getElementById("cancelButton");
+
+        button.classList.remove("loading");
+        button.innerText = "Start";
+        button.style.background = "#4CAF50"; // Reset color
+        cancelButton.style.display = "none"; // Hide Cancel button
+    }
+</script>
+
+</body>
+</html>
